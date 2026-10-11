@@ -9,6 +9,10 @@
 # Reading and counting your labelled data
 pandas>=2.0,<3.0
 
+# torch 2.2.x was built against NumPy 1.x and crashes on import under NumPy 2 —
+# pin below 2 until torch is upgraded.
+numpy<2.0
+
 # The zero-shot baseline (unit 6) and the fine-tune (unit 5). Both run on your
 # own machine — no API key, no account.
 transformers>=4.44,<5.0
@@ -18,6 +22,10 @@ transformers>=4.44,<5.0
 # else instead of being installed by a first cell.
 datasets>=2.20,<4.0
 accelerate>=0.30,<2.0
+
+# datasets pulls pyarrow with no upper bound, and pyarrow>=18 refuses to import
+# under NumPy 1.x — pin below that so it stays compatible with numpy<2 above.
+pyarrow>=15.0,<18.0
 
 # transformers needs a backend. CPU-only is fine: this dataset is small enough
 # that a full three-seed run is minutes. If your machine has an NVIDIA GPU or
