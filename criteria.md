@@ -55,11 +55,15 @@ whether you hit them:
 
 <!-- Your criterion. It must name a number. -->
 
-
+Overall accuracy on the held-out test split is at least 70%.
 
 **Why this target:**
 
-
+With 4 labels, a coin-flip guesser gets about 25%. Two of my labels
+(`ticket_exchange`, `logistics`) have fairly distinctive vocabulary — prices,
+"DM me", seat/row numbers, show times — which should make them easy to tell
+apart from the other two. 70% sits well above chance and above what I'd
+expect from vocabulary alone, so it's a real bar, not a guarantee.
 
 ---
 
@@ -67,11 +71,15 @@ whether you hit them:
 
 <!-- Your criterion. -->
 
-
+`ticket_exchange` has an F1 of at least 0.85 on the held-out set.
 
 **Why this target:**
 
-
+This is my easiest label by far — posts in it almost always contain a price,
+"selling"/"WTB"/"WTS", or "DM me", words that rarely show up in my other three
+labels. If the model can't do very well here, something is wrong with my
+labelling rather than the task being genuinely hard, so I'm setting this one
+high on purpose.
 
 ---
 
@@ -79,11 +87,15 @@ whether you hit them:
 
 <!-- Your criterion. -->
 
-
+No single label makes up more than 65% of my 208 labelled posts.
 
 **Why this target:**
 
-
+r/NYCmovies skews toward ticket posts, so `ticket_exchange` is my biggest risk
+for dominating the set. The brief caps any label at 70% before the model just
+learns to guess it; I'm picking 65% as my own, slightly stricter target
+because I want the other three labels to have enough examples to actually be
+measurable, not just technically present.
 
 ---
 
@@ -91,11 +103,16 @@ whether you hit them:
 
 <!-- Your criterion. -->
 
-
+`analysis` and `commentary` each have an F1 of at least 0.50 on the held-out set.
 
 **Why this target:**
 
-
+These two are my hardest boundary — both can be about the same kind of post
+(a theater's future, an etiquette complaint), and the only difference is
+whether a checkable fact is actually load-bearing in the argument. I expect
+these two labels to also have fewer examples than `ticket_exchange` or
+`logistics`, so I'm setting a lower bar than Criterion 1's overall number,
+rather than pretending this boundary is as easy as the others.
 
 ---
 
@@ -103,11 +120,16 @@ whether you hit them:
 
 <!-- Your criterion. -->
 
-
+Among the model's most-confident third of predictions, accuracy is at least
+20 points higher than among its least-confident third.
 
 **Why this target:**
 
-
+If a confident guess isn't right more often than an unsure one, confidence is
+just noise and I shouldn't trust it when deciding whether to double-check a
+prediction. 20 points is large enough that it can't be explained away by
+normal seed-to-seed variance on a 208-post dataset, so a hit here would mean
+something real.
 
 ---
 
