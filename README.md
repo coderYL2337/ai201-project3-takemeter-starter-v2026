@@ -203,7 +203,18 @@ tuning anything.
 **Split sizes:** <!-- train / val / test, and per-label counts in the test
 split. If a label had fewer than about 8 in test, say so — it explains a lot
 of next unit's variance. -->
-*(fill in after running section 3 of the notebook)*
+train 144 · val 32 · test 32 (70/15/15 of 208 posts, seed 42).
+
+| Label | train | val | test |
+|---|---|---|---|
+| `ticket_exchange` | 30 | 7 | 7 |
+| `logistics` | 43 | 10 | 9 |
+| `analysis` | 23 | 5 | 5 |
+| `commentary` | 48 | 10 | 11 |
+
+`ticket_exchange` (7) and `analysis` (5) both have fewer than 8 examples in
+the test split — their F1 will be noisy between seeds, and this run already
+shows it: both scored 0.000 F1 on this seed.
 
 
 
