@@ -5,6 +5,8 @@
 #
 # Delete the examples below and put yours in.
 
-analysis: makes an argument backed by a specific, checkable fact
-hot_take: a confident claim with no support offered
-reaction: an immediate response to something that just happened
+ticket_exchange: buying, selling, trading, or giving away a ticket
+logistics: a practical question about seeing a show, with no argument or transaction attached
+analysis: a reasoned argument backed by a specific, checkable fact that the claim depends on
+commentary: a personal reaction or opinion about the movie-going experience, supported or not
+

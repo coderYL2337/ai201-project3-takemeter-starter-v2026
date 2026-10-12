@@ -41,6 +41,13 @@
 
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
+     The community I chose is the Reddit NYC Movies forum: https://www.reddit.com/r/NYCmovies/
+     My classifier sorts posts into 4 categories: `ticket_exchange` (buying,
+     selling, trading, or giving away a ticket), `logistics` (practical
+     questions about seeing a show — seats, showtimes, worth the trip — with
+     no argument or transaction attached), `analysis` (a reasoned argument
+     backed by a specific, checkable fact), and `commentary` (a personal
+     reaction or opinion about the movie-going experience, supported or not).
 
 
 
@@ -54,34 +61,62 @@
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+### `ticket_exchange`
 
 **Definition:**
+Buying, selling, trading, or giving away a ticket.
 
 **Example 1:**
->
+>“Ticket for Musk at AMC Lincoln Square this afternoon Sorry for the last minute post, but I can’t leave work to catch this and want to offer the ticket for anyone that can use it on super short notice. Free, just DM me and I can screen shot the pass.”
 
 **Example 2:**
->
+>“selling 1x ticket to sakamoto movies TODAY 9/26 metrograph hey reddit,i am selling 1x ticket to each of these two nearly sold out sakamoto movies today at metrograph Ryuichi Sakamoto: Diaries Saturday, 26 September 2026 05:45 PM Seat(s): Row H (exact will be shared when I transfer the ticket)Tokyo Melody Saturday, 26 September 2026 04:10 PM Seat(s): Row I (exact will be shared when I transfer the ticket) the price of each ticket is $11 or best offer! pay by zelle/venmo/cashapp/paypal”
 
-### `label_two`
+### `logistics`
 
 **Definition:**
+A practical question about seeing a show — seats, showtimes, whether it's worth going — with no argument or transaction attached.
 
 **Example 1:**
->
+>“THE ODYSSEY in 70mm IMAX worth it for 11:00 p.m. showing? I live in Long Island, but frequently visit the city anyway on weekends. I have a ticket for tonight’s showing at 11:00 p.m. Is it worth the trip if it gets me home by about 5:00 a.m.?”
 
 **Example 2:**
->
+>“Which seats are preferred for the 35mm showing? It says screen 3 but I can’t tell which row I should do for optimal viewing. I do plan on getting an aisle seat though.”
+
+### `analysis`
+
+**Definition:**
+A reasoned argument backed by a specific, checkable fact that is doing real work in the claim.
+
+**Example 1:**
+>“The theater was already in desperate need of renovations when it closed, and would probably need a full overhaul now. And the reason pulled out is because the it didn’t make financial sense to invest in renovations without a more favorable lease, but the landlord wasn’t interested.”
+
+**Example 2:**
+>“At MoMA if there’s a series I’m not interested in, that means a month or so without seeing anything I want. On the other hand, if it’s a good series I’m seeing 10 free movies that month. MoMI has more variety in their programming but they are really bad about scheduling and post their calendar with very little notice.”
+
+### `commentary`
+
+**Definition:**
+A personal reaction or opinion about the movie-going experience, supported or not.
+
+**Example 1:**
+>“Mouse in Theater  I was at Regal Essex Crossing last night and saw this little guy. It got a lot of love on Twitter so I thought I’d share here.Note: this was at least the third time I’ve seen a mouse in The theater. The other times were at Regal Essex Crossing and AMC Lincoln Square.Edit: the movie was Other Mommy There was another mouse too but I couldn’t get a shot of it. I refer to it as other mousie. Also someone asked me to name it so I call him Greyson.”
+
+**Example 2:**
+>“I wouldn't buy popcorn there . That part ain't cute.”
 
 ### The hardest boundary
 
 **Which two labels:**
+`analysis` and `commentary`
 
 **The decision rule I used every time:**
 <!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
      if the tone is heated." -->
-
+If the post offers a specific, checkable fact that the claim actually depends
+on — a price, a date, a named policy reason — it's `analysis`, even if the
+tone is heated. If it's just how the writer felt about an experience, however
+detailed, it's `commentary`.
 
 
 ---
@@ -92,6 +127,7 @@
      cases. -->
 
 **Where the posts came from:**
+ https://www.reddit.com/r/NYCmovies/
 
 **How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
 Say so plainly — the disclosure is required, not penalised. -->
