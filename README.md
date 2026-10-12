@@ -131,15 +131,20 @@ detailed, it's `commentary`.
 
 **How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
 Say so plainly — the disclosure is required, not penalised. -->
+22 posts cold — read and labelled myself with no AI assistance, before anything
+else was labelled. The remaining 186 were pre-labelled by an AI assistant
+against the definitions above, then I read every one and corrected the calls I
+disagreed with (several of the hardest ones are below).
 
 **Counts per label:**
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| `commentary` | 69 | 33.2% |
+| `logistics` | 62 | 29.8% |
+| `ticket_exchange` | 44 | 21.2% |
+| `analysis` | 33 | 15.9% |
+| **Total** | 208 | 100% |
 
 **Three hard cases**
 
@@ -147,41 +152,58 @@ Say so plainly — the disclosure is required, not penalised. -->
      been, and what you chose. These are worth more than the easy 190. -->
 
 **1.**
-> *The post:*
+> *The post:* “Are there empty seats in the 70mm IMAX Odyssey showings bc of
+> the scalpers? ... if anyone in here has tickets on that date that wanna sell
+> them (not for $2k) please lmk”
 >
-> *Could have been:*
+> *Could have been:* `logistics` (it opens with a genuine question about
+> whether scalped seats go empty) or `ticket_exchange`.
 >
-> *I chose, because:*
+> *I chose, because:* the post ends with an explicit request to buy a ticket
+> from whoever's reading. The question is context for why they're asking, not
+> the point of the post — the actionable ask is the transaction.
 
 **2.**
-> *The post:*
+> *The post:* “i will say, i use my MOMI membership the least out of all my
+> film memberships, their programming is good but they schedule things
+> weirdly and also are really bad about emailing about member only events...”
 >
-> *Could have been:*
+> *Could have been:* `analysis` (it does cite specific complaints — bad
+> scheduling, bad emailing) or `commentary`.
 >
-> *I chose, because:*
+> *I chose, because:* the specific complaints aren't load-bearing for an
+> argument — there's no conclusion being argued for beyond "I probably won't
+> renew." It reads as a personal account of frustration, not a case being made.
 
 **3.**
-> *The post:*
+> *The post:* “Club Kid tickets are live on the AMC app randomly checked the
+> app and saw tickets are up! get em while they're hot”
 >
-> *Could have been:*
+> *Could have been:* `ticket_exchange` (it's entirely about tickets) or
+> `logistics`.
 >
-> *I chose, because:*
-
----
-
-## The Training Run
+> *I chose, because:* nobody is buying, selling, trading, or giving away a
+> ticket in the post itself — it's an alert that tickets exist. That's
+> practical information about seeing a show, which is what `logistics` is for,
+> even though the subject matter overlaps heavily with `ticket_exchange`.
 
 <!-- Your starting model, your settings, and anything you changed and why. -->
 
 **Base model:**
+`distilbert-base-uncased`, the notebook's default — no reason to move off it
+for a four-label, 208-post dataset this size.
 
 **Settings:** <!-- epochs, learning rate, batch size, seed -->
+3 epochs, learning rate 2e-5, batch size 16, seed 42 (the notebook's defaults).
 
 **Anything I changed from the defaults, and why:**
+Nothing yet — running with the defaults first so I have a baseline before
+tuning anything.
 
 **Split sizes:** <!-- train / val / test, and per-label counts in the test
 split. If a label had fewer than about 8 in test, say so — it explains a lot
 of next unit's variance. -->
+*(fill in after running section 3 of the notebook)*
 
 
 
@@ -198,17 +220,29 @@ of next unit's variance. -->
 
 **Moment 1**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* help deciding how many labels my taxonomy should have
+  after I described my community (a ticket buy/sell/trade forum crossed with
+  general movie discussion).
+- *What came back:* a recommendation to use 4 labels instead of 2, with
+  `ticket_exchange` split out from general discussion, since collapsing them
+  would risk one label dominating over 70% of the data.
+- *What I changed:* adopted the 4-label structure (`ticket_exchange`,
+  `logistics`, `analysis`, `commentary`) instead of my original 2-label idea.
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* to pre-label the ~186 posts in `labels.csv` I hadn't
+  cold-labelled yet, using my taxonomy's definitions.
+- *What came back:* every post labelled with one of my 4 labels, plus a note
+  on which ones were genuinely ambiguous (ties to scalping, ticket-availability
+  announcements, and a couple of analysis/commentary boundary calls).
+- *What I changed:* read every pre-labelled post and corrected the ones I
+  disagreed with before finalising `labels.csv`.
 
 **Pre-labelling disclosure:**
+186 of my 208 posts were pre-labelled by AI against my written definitions,
+then read and corrected by me one at a time. 22 were labelled cold, with no AI
+involvement, before the pre-labelling pass began.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
