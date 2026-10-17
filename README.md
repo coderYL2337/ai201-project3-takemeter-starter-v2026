@@ -266,7 +266,7 @@ involvement, before the pre-labelling pass began.
 
 <!-- Both models on the same posts. `python baseline.py --trained results.json`
      prints this table for you. -->
-
+<!--run python baseline.py --trained results.json with labels_definition.txt-->
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
 | Overall accuracy | 0.594 | 0.500 | -0.094 |
@@ -275,6 +275,17 @@ involvement, before the pre-labelling pass began.
 | F1 — `commentary` | 0.645 | 0.629 | -0.017 |
 | F1 — `logistics` | 0.200 | 0.588 | +0.388 |
 | F1 — `ticket_exchange` | 0.833 | 0.000 | -0.833 |
+
+<!--run python baseline.py --trained results.json --out baseline_results_nodefs.json without labels_definition.txt-->
+
+| Measure | Baseline | Trained | Difference |
+|---|---|---|---|
+| Overall accuracy | 0.500 | 0.500 | +0.000 |
+| Macro F1 | 0.355 | 0.304 | -0.051 |
+| F1 — `analysis` | 0.000 | 0.000 | +0.000 |
+| F1 — `commentary` | 0.667 | 0.629 | -0.038 |
+| F1 — `logistics` | 0.182 | 0.588 | +0.406 |
+| F1 — `ticket_exchange` | 0.571 | 0.000 | -0.571 |
 
 
 **What I predicted before I looked:**
