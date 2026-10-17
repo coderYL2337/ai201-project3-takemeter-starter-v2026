@@ -1,0 +1,200 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 32,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 32,
+    "accuracy": 0.59375,
+    "f1_macro": 0.5559872922776148,
+    "per_label": {
+      "analysis": {
+        "precision": 0.5,
+        "recall": 0.6,
+        "f1": 0.5454545454545454,
+        "support": 5
+      },
+      "commentary": {
+        "precision": 0.5,
+        "recall": 0.9090909090909091,
+        "f1": 0.6451612903225806,
+        "support": 11
+      },
+      "logistics": {
+        "precision": 1.0,
+        "recall": 0.1111111111111111,
+        "f1": 0.19999999999999998,
+        "support": 9
+      },
+      "ticket_exchange": {
+        "precision": 1.0,
+        "recall": 0.7142857142857143,
+        "f1": 0.8333333333333333,
+        "support": 7
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "Are there empty seats in the 70mm IMAX Odyssey showings bc of the scalpers?I\u2019ve been so desperate to get tickets and feel so hopeless bc of the scalpers and am wondering if I buy the front row seats if there\u2019s any chance I could find better seats bc the scalpers\u2019 tickets didn\u2019t sell?? Or are people actually buying them at those crazy prices?!? Idk I never thought it could be this hard to get movie tickets\u2026 It\u2019s my fianc\u00e9s birthday on the 18th and I really wanted to get us tickets to see the odyssey on Sunday the 20th so if anyone in here has tickets on that date that wanna sell them (not for $2k) please lmk",
+      "gold": "ticket_exchange",
+      "predicted": "commentary"
+    },
+    {
+      "text": "\u201cSeeking 1 ticket for History of Concrete at Rockaway Film Fest Hi. Would pay for 1 ticket to History of Concrete. Message me if selling. Thank you!\u201d",
+      "gold": "ticket_exchange",
+      "predicted": "ticket_exchange"
+    },
+    {
+      "text": "I\u2019ve never had an issue with the staff or audience there. It\u2019s not my favorite theater but I go sometimes when I want to mix it up.",
+      "gold": "commentary",
+      "predicted": "commentary"
+    },
+    {
+      "text": "Did you ever find anything out about that? I also have 12/27 tix for 12:30 and they\u2019re still on my account but I can\u2019t access them at all even through history. And I don\u2019t see the showtime listed on AMC for Lincoln square for 70 mm for that time at all either",
+      "gold": "logistics",
+      "predicted": "commentary"
+    },
+    {
+      "text": "If its AMC, assume there will be trailers. In the app, when you reserve/buy the ticket, there's the Movie Start time: which when trailers and additional content begin. \"The movie will start 25-30 minutes after the listed showtime.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Wow, thank you!",
+      "gold": "commentary",
+      "predicted": "analysis"
+    },
+    {
+      "text": "A Clockwork Orange Screening + Q&A with star Malcolm McDowell - Angelika Sept 16",
+      "gold": "logistics",
+      "predicted": "analysis"
+    },
+    {
+      "text": "THE ODYSSEY in 70mm IMAX worth it for 11:00 p.m. showing?I live in Long Island, but frequently visit the city anyway on weekends. I have a ticket for tonight\u2019s showing at 11:00 p.m. Is it worth the trip if it gets me home by about 5:00 a.m.? I have a great seat towards the middle of the pack (seat F24). This would be my second time seeing it (I saw it in standard 70mm the first time).",
+      "gold": "logistics",
+      "predicted": "commentary"
+    },
+    {
+      "text": "Prime is nice. Also, there is quite a lot of space between the screen and the front row, so even if you have to sit a bit closer the viewing angle is not so bad.",
+      "gold": "analysis",
+      "predicted": "commentary"
+    },
+    {
+      "text": "There was a person with a disability, and he had a CPAP machine. I wouldn\u2019t be surprised if you heard his CPAP machine. I sat near him for Mulholland Drive and heard it throughout the whole film.",
+      "gold": "commentary",
+      "predicted": "commentary"
+    },
+    {
+      "text": "I was the girl who got to ask the singular audience question at the 6:15 IFC Fjord Q&A, AMA Moderator told me good question and Sebastian Stan looked right into my eyes as he answered it, so obviously my sense of self-importance is inflated. Also, please go see this film. It was fantastic and will definitely be getting another viewing from me. Career best from Stan and Reinsve.",
+      "gold": "commentary",
+      "predicted": "commentary"
+    },
+    {
+      "text": "All you had to do was reply shut the f up",
+      "gold": "commentary",
+      "predicted": "commentary"
+    },
+    {
+      "text": "The late arrival with phone flash light being disturbing is such a common persona now. I saw The Odyssey at Lincoln Square Imax recently and it's exactly what happened with the person next to me. First they are 20 minutes late. Then they get confused as they don't recognize what's on the screen, talk loudly with each other trying to figure it out then at full volume asks me if they're in the right room. I tell them yes and ask them to be quiet. A few minutes later they turn on their phone with flash light. I ask them to shut that shit off. They do but not immediately as they fumble with their phone to finish texting That happened (minus the flashlight) another 5+ times throughout the movie. Repeatedly asking them to stop, they just nod but ignore it. Unfortunately to go tell a husher Id have to not only miss part of the movie, but there's not a lot of room to move in those seats and the offenders have tons of bags on the floor so I'd have to ask them to let me through which is easier said than done. Pain in the fucking ass. It's easier at Alamo, but that went downhill and it's very hit or miss if the staff will do anything.",
+      "gold": "commentary",
+      "predicted": "commentary"
+    },
+    {
+      "text": "Looking to buy tickets to History of Concrete Q&As at either IFC or Low Cinema!Any amount of tickets! Any of the screenings! Missed the drop on these and my friends and I love JW deeply. Hoping more Q&As drop at Low.",
+      "gold": "ticket_exchange",
+      "predicted": "ticket_exchange"
+    },
+    {
+      "text": "Dolby is my go to. However, I saw Akira in IMAX recently and don\u2019t think Dolby could display an animation like that! Also I think your point about dune is funny!! When they displayed the Dune 3 Prologue there was a huge sign that say thanks Christopher Nolan for me letting me preview dune 3 - Denis obviously it verbatim but it was hard to miss LOL",
+      "gold": "commentary",
+      "predicted": "commentary"
+    },
+    {
+      "text": "Yeah! I was actually able to get in contact with support. They confirmed my confirmation and said to bring that as my ticket. They saw that the showing wasn\u2019t listed but is still scheduled and contacted management at the theater. So we should be good!",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "I was told by a manager at an AMC that it works. They can also scan those.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Buddy for sure. It\u2019s a comedic horror, very very light on the horror tbh",
+      "gold": "commentary",
+      "predicted": "commentary"
+    },
+    {
+      "text": "To the person at the 6:45 showing of the sun never sets at amc empire who screamed their guess on the movie\u2019s plot twist\u2026I hope the fact that you were loudly wrong shames you into never do that ever again. That was so annoying! Let the audience figure it out on their own! This isn\u2019t your living room!",
+      "gold": "commentary",
+      "predicted": "commentary"
+    },
+    {
+      "text": "awful audience at vertigo paris theater showing like actually ridiculous, constant big laughs at the most inappropriate times. like the whole last act, while jimmy stewart is losing his mind and growing more and more controlling, just constant laughing at the most inappropriate, somber moments. i know it sounds pretentious but why are you there if you can\u2019t engage with art seriously. watch it at home if you just wanna look at it as a fun pop culture thing and laugh at the somewhat dated aspects, it actually ruined some of my favorite scenes in the movie.",
+      "gold": "commentary",
+      "predicted": "commentary"
+    },
+    {
+      "text": "I had a similar experience at AMC Bay Terrace earlier this evening while watching Colony. Two ladies next to me doing commentary throughout the whole fucking movie. I wish I had told them to shut up",
+      "gold": "commentary",
+      "predicted": "commentary"
+    },
+    {
+      "text": "Which seats are preferred for the 35mm showing? It says screen 3 but I can\u2019t tell which row I should do for optimal viewing. I do plan on getting an aisle seat though.",
+      "gold": "logistics",
+      "predicted": "commentary"
+    },
+    {
+      "text": "AMC Lincoln Square Not Adding Showtimes Does anybody know why AMC Lincoln Square hasn\u2019t added any showtimes for any movies for this coming Wednesday and Thursday?",
+      "gold": "logistics",
+      "predicted": "commentary"
+    },
+    {
+      "text": "Does a picture of the physical ticket work?i wont be able to go to watch odessey70mm on 5th September 10pm. I have one physical ticket but im not in ny for the weekend right now. If i send the picture of the ticket to someone will they get in? Also let me know if anyone is interested in this ticket. I can send over the ticket as a picture.",
+      "gold": "ticket_exchange",
+      "predicted": "commentary"
+    },
+    {
+      "text": "Selling 2 Tickets to Musk 5pm 10/10/26 @ Angelika w/ Q&A A bit last minute, but I\u2019m looking to sell my 2 tickets to the Musk Q&A at Angelika Film Center tonight at 5pm. Was excited to see it, but I didn\u2019t realize the runtime is nearly 4 hours and I have a commitment that won\u2019t allow me to stay for the whole thing. I would much rather someone else can enjoy it! Selling for $40 for both.",
+      "gold": "ticket_exchange",
+      "predicted": "ticket_exchange"
+    },
+    {
+      "text": "Akira at AMC prime or xl?I have a ticket for 34th street IMAX, but now a friend wants to go, so I figure AMC Empire\u2019s XL or Prime showings will still boldly deliver. For Akira, a bigger screen is preferable, but I know Prime in going to have a better, if not smaller, set up. Anybody here able to compare/contrast not just these cinema formats, but the auditoriums at Empire? Thanks!",
+      "gold": "logistics",
+      "predicted": "commentary"
+    },
+    {
+      "text": "Fair Theater in East Elmhurst.",
+      "gold": "logistics",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Anyone down for a spontaneous late-night Resident Evil showing? (10:15 PM, AMC 34th St) 27M, visiting NYC for a bit and spontaneously decided to catch Resident Evil tonight at 10:15 PM at AMC 34th Street. Figured I'd throw this out here in case anyone else is looking for something to do tonight! There are still plenty of good seats available. I'm going either way, but thought it could be fun to meet some new people while I'm here. Feel free to comment or DM if you're down!",
+      "gold": "logistics",
+      "predicted": "logistics"
+    },
+    {
+      "text": "Practical magic premiere?I\u2019m really big fan of practical magic franchise just saw that the actors will be around to promote the movie. Any clue if there will be a premiere or any q&as where I can gain access or watch from afar please let me know in the comments or dm.",
+      "gold": "logistics",
+      "predicted": "commentary"
+    },
+    {
+      "text": "Selling Hope Movie w/ Q&A AMC LincolnS today 9/7 7:00PM I brought tixs through A-list tixs with a friend, but they are cancelling. I'm open to coordinating a time to cancel my tix; just dm me.",
+      "gold": "ticket_exchange",
+      "predicted": "ticket_exchange"
+    },
+    {
+      "text": "If it\u2019s in the main auditorium, the theater is wide and seats 210 people. The sight lines are pretty decent so I wouldn\u2019t worry so much about getting there too early. (Some of the Q&As don\u2019t sell out.) Theater 2 is 114 seats, more narrow space and actually more ideal for Q&As. Any seat would be good.",
+      "gold": "analysis",
+      "predicted": "commentary"
+    },
+    {
+      "text": "Selling: 9/17 7pm Breaking Bad Day @ Alamo Downtown Bk Double booked myself, going to see the Hope Q&A :) Just asking for $12.19 which includes $10 F&B voucher & the Alamo convenience fee.",
+      "gold": "ticket_exchange",
+      "predicted": "ticket_exchange"
+    }
+  ]
+}

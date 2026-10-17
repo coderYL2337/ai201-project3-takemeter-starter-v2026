@@ -269,14 +269,18 @@ involvement, before the pre-labelling pass began.
 
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Overall accuracy | 0.594 | 0.500 | -0.094 |
+| Macro F1 | 0.556 | 0.304 | -0.252 |
+| F1 — `analysis` | 0.545 | 0.000 | -0.545 |
+| F1 — `commentary` | 0.645 | 0.629 | -0.017 |
+| F1 — `logistics` | 0.200 | 0.588 | +0.388 |
+| F1 — `ticket_exchange` | 0.833 | 0.000 | -0.833 |
+
 
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
+     I predict that my trained model has higher accuracy when classifying the posts.
 
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
