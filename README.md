@@ -306,24 +306,34 @@ involvement, before the pre-labelling pass began.
 <!-- Five criteria across three seeds. The notebook's section 6 prints the
      spread table; the Target and Verdict columns are yours. -->
 
-| Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
+
+| Measure | Seed 42 | Seed 7 | Seed 2024 | Spread | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| Overall accuracy | 0.500 | 0.344 | 0.438 | 0.156 | Moved 0.156 across seeds — more than 10 points. The dataset is too small or too lopsided for a stable measure. |
+| Macro F1 | 0.304 | 0.190 | 0.261 | 0.114 | |
+| F1 — `ticket_exchange` | 0.000 | 0.000 | 0.000 | 0.000 | Not a spread problem — zero on every seed. The model never predicts this label at all, which is collapse, not noise. |
+| F1 — `logistics` | 0.588 | 0.474 | 0.471 | 0.118 | |
+| F1 — `analysis` | 0.000 | 0.000 | 0.000 | 0.000 | Same pattern as `ticket_exchange` — consistently zero, not swinging. |
+| F1 — `commentary` | 0.629 | 0.286 | 0.571 | 0.343 | Largest swing in the table, over double the accuracy spread — the least trustworthy number here. |
 
 ### Confusion matrix
 
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
-| true \ predicted |  |  |  |
-|---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| true \ predicted | ticket_exchange | logistics | analysis | commentary |
+|---|---|---|---|---|
+| **ticket_exchange** | 0 | 2 | 0 | 5 |
+| **logistics** | 0 | 5 | 0 | 4 |
+| **analysis** | 0 | 1 | 0 | 4 |
+| **commentary** | 0 | 0 | 0 | 11 |
+
+Biggest confusion: 5 real `ticket_exchange` posts called `commentary`.
+The other direction: 0 real `commentary` posts called `ticket_exchange`.
+
+That's lopsided — the model leans toward `commentary` on this pair.
+A direction like that usually points at your labelling rather than the
+model. Your agreement report is the thing that can tell you which.
 
 **My biggest off-diagonal number, and what it means:**
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
