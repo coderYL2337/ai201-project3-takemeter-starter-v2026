@@ -380,7 +380,15 @@ model. Your agreement report is the thing that can tell you which.
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** ___ / 30 = ___%
+Compared 30 posts.
+
+  agreed      30
+  disagreed   0
+  agreement   100%
+
+I matched staff on every post. The set was easy or my rule is genuinely tight.
+
+**Agreement rate:** 30 / 30 = 100%
 
 <!-- Nobody grades this number. A 60% who argues every disagreement from the
      stated rules beats a 95% who wrote "staff was right" nine times. Several
@@ -402,27 +410,61 @@ model. Your agreement report is the thing that can tell you which.
      written rule two different ways on 30 posts, that is direct evidence about
      what you did across your own 200. -->
 
+None — I matched staff on all 30, including the 7 staff flagged as `HARD`
+(`sp_005`, `sp_010`, `sp_014`, `sp_019`, `sp_020`, `sp_028`, `sp_029`). Three of
+those worth showing the reasoning on, since they're where disagreement would
+most plausibly have happened:
+
 **1.**
-> *The post:*
+> *The post:* sp_014 — "Times are down about 3% since the shoe rules changed,
+> so obviously the shoes are the whole story and the sport has a problem."
 >
-> *Staff said / I said:*
+> *Staff said / I said:* `hot_take` / `hot_take`.
 >
-> *My call, and why:*
+> *My call, and why:* The 3% is decoration on a conclusion already reached —
+> "so obviously" is doing the argumentative work, not the number. Rule 1 asks
+> whether the fact carries the claim; here it doesn't.
 >
-> *Which pile:*
+> *Which pile:* n/a — agreement, not a disagreement. Flagged because it's the
+> canonical rule-1 case: the clearest test of whether I'd apply the rule or
+> get pulled in by the presence of a number.
 
 **2.**
-> *The post:*
+> *The post:* sp_010 — "Three of us ran the same session... within 10 seconds
+> of each other over 5 miles. I'm not saying shoes do nothing, but whatever
+> they do was smaller than the noise between three people."
 >
-> *Staff said / I said:*
+> *Staff said / I said:* `analysis` / `analysis`.
 >
-> *My call, and why:*
+> *My call, and why:* Hedged conclusion, tiny sample — but the observation is
+> checkable and the entire claim rests on it. The hedge doesn't disqualify it
+> from `analysis`; the fact is still load-bearing.
 >
-> *Which pile:*
+> *Which pile:* n/a — agreement.
+
+**3.**
+> *The post:* sp_029 — "Just realised the shoes I set every PB in this year
+> are the ones I bought by accident in the wrong size."
+>
+> *Staff said / I said:* `reaction` / `reaction`.
+>
+> *My call, and why:* Reads like it could be a wry `hot_take` about shoe
+> discourse, but it's the writer reporting their own realisation, right now —
+> rule 2 (a claim about the world vs. a report about the writer) puts it in
+> `reaction`.
+>
+> *Which pile:* n/a — agreement.
 
 **What the pattern in my disagreements tells me:**
-
-
+There's no disagreement to diagnose, but the near-misses are informative on
+their own: every post staff marked `HARD` is exactly where I had to slow down
+and apply rules 1-3 explicitly rather than pattern-match on surface features
+like numbers or heated tone. That's encouraging for my own taxonomy's hardest
+boundary (`analysis` vs. `commentary`), which turns on the same test — whether
+a fact is load-bearing, not whether one is merely present. What this 100%
+doesn't tell me is whether I'd stay that careful across 200 posts of my own
+without an answer key to check against, which is the more realistic failure
+mode than misreading the rules themselves.
 
 ---
 
