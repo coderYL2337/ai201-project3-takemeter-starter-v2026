@@ -336,9 +336,18 @@ A direction like that usually points at your labelling rather than the
 model. Your agreement report is the thing that can tell you which.
 
 **My biggest off-diagonal number, and what it means:**
-<!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
-     direction. "7 real analysis posts were called hot_take and only 3 went the
-     other way" is a direction, not just an error rate. -->
+5 real `ticket_exchange` posts were called `commentary`, and 0 real `commentary`
+posts went the other way. The model isn't confusing these two occasionally —
+at this seed it never predicts `ticket_exchange` at all (`ticket_exchange`'s
+F1 is 0.000 on every one of the three seeds in the Run Log, not just this
+one). Everything that should land in `ticket_exchange` is instead falling into
+`commentary`, my largest and most "default" label (11/11 test `commentary`
+posts were caught correctly). `ticket_exchange` posts have fairly distinctive
+vocabulary (prices, "DM me", "selling"/"WTB"), so if the boundary were simply
+hard, I'd expect confusion in both directions at least sometimes — the fact
+that it's 5-to-0 and zero F1 on every seed points at the model defaulting to
+the majority class given too few `ticket_exchange` training examples (30),
+rather than at me labelling tickets as commentary throughout my own 208 posts.
 
 
 
@@ -351,11 +360,11 @@ model. Your agreement report is the thing that can tell you which.
 
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | Overall accuracy | ≥ 0.70 | MISSED | Best of three seeds is 0.500 (seed 42); seeds 7 and 2024 are lower still. Not close on any seed. |
+| 2 | `ticket_exchange` F1 | ≥ 0.85 | MISSED | 0.000 on all three seeds — the model never predicts this label at all. |
+| 3 | No label > 65% of 208 posts | ≤ 0.65 share | MET | Largest label (`commentary`) is 33.2% of `labels.csv` — well under the cap, and this doesn't vary by seed since it's a property of the data, not the model. |
+| 4 | `analysis` and `commentary` F1 ≥ 0.50 each | ≥ 0.50 both | MISSED | `analysis` is 0.000 on all three seeds. `commentary` is 0.629 / 0.286 / 0.571 — fails the "holds across all three seeds" bar on seed 7 alone. |
+| 5 | Most-confident third vs. least-confident third accuracy | ≥ 20 pts higher | MET | Gaps of 50, 60, and 60 points (seeds 42, 7, 2024) — comfortably over target on every seed. |
 
 **Diagnoses**
 
@@ -368,7 +377,36 @@ model. Your agreement report is the thing that can tell you which.
      have that can tell a LABELLING problem from a MODEL problem, and this
      section is graded on whether you used it that way. -->
 
+**Criterion 1 (overall accuracy):** too little data for a 4-way task, not a
+labelling problem. 144 training posts across 4 labels is thin for fine-tuning,
+and the 15.6-point accuracy spread across seeds (Run Log) shows the measure
+itself is unstable at this size — on top of that, two of the four labels never
+get predicted at all (next diagnosis), which alone caps accuracy well below
+70%.
 
+**Criterion 2 (`ticket_exchange` F1):** too few training examples for this
+label relative to a dominant confusable class, not a labelling inconsistency.
+The confusion matrix shows 5 of 5 misclassified `ticket_exchange` test posts
+went to `commentary`, 0 the other way — total collapse into the majority
+class. `ticket_exchange` has distinctive vocabulary (prices, "DM me",
+"selling"), so a genuine boundary problem should produce confusion in both
+directions sometimes; this one-way, every-seed pattern looks like 30 training
+examples isn't enough for the model to learn the class at all, independent of
+whether my labels are consistent.
+
+**Criterion 4 (`analysis` / `commentary` F1):** two different causes bundled
+together. `analysis` shows the identical collapse pattern as `ticket_exchange`
+(0.000 every seed, only 23 train examples, 4 of 5 test posts swallowed into
+`commentary`) — a data-volume problem, not a labelling one. `commentary` is
+different: it swings from 0.286 to 0.629 across seeds rather than failing
+uniformly, consistent with a small test split (11 posts) rather than a
+structural failure. I can't fully rule out inconsistency on my hardest
+boundary (`analysis` vs. `commentary`) using the agreement report, though —
+that check was 100% against *staff's* running-club taxonomy, which tells me I
+can apply a written rule consistently in general, not specifically that I drew
+my own `analysis`/`commentary` line the same way across all 208 of my posts.
+That's a real gap in what this instrument can tell me, not a result I'm
+over-claiming confidence from.
 
 ---
 
