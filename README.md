@@ -514,34 +514,59 @@ mode than misreading the rules themselves.
 ## The Improvement
 
 **What I changed:**
+Collected and labelled 44 additional real posts from r/NYCmovies across two
+batches, targeting the two labels whose F1 had collapsed to 0.000 on every
+seed in the Before run (`ticket_exchange` and `analysis`). The subreddit's
+natural mix meant the 44 posts broke down as +10 `ticket_exchange`, +7
+`logistics`, +17 `commentary`, and only +10 `analysis` — a quarter of what I
+collected, despite deliberately searching for analysis-heavy threads. That
+shortfall is itself a finding (see below). `labels.csv` grew from 208 to 252
+rows; `analysis` went 33 → 43 and `ticket_exchange` went 44 → 54.
 
 **Which diagnosis pointed at it:**
+Criteria 2 and 4's diagnoses (Verdicts and Diagnoses, above): `ticket_exchange`
+(30 train examples) and `analysis` (23 train examples) had both collapsed
+entirely into the majority class `commentary` on every seed, traced to too
+little training data rather than a labelling-consistency problem — the
+agreement report showed 100% consistency, which pointed away from relabelling
+and toward adding examples.
 
 ### Run Log — After
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | ≥ 0.70 | 0.368 | 0.579 | 0.632 | MISSED |
+| 2. `ticket_exchange` F1 | ≥ 0.85 | 0.400 | 0.857 | 0.769 | MISSED (2 of 3 seeds clear it) |
+| 3. No label > 65% of posts | ≤ 0.65 share | 34.1% (dataset-level, same across seeds) | — | — | MET |
+| 4. `analysis` & `commentary` F1 ≥ 0.50 each | ≥ 0.50 both | `analysis` 0.000 / `commentary` 0.500 | `analysis` 0.000 / `commentary` 0.647 | `analysis` 0.000 / `commentary` 0.706 | MISSED (`commentary` now clears it on all three; `analysis` doesn't move at all) |
+| 5. Confident-third vs. least-confident-third accuracy | ≥ 20 pts | +66.7 pts | +25.0 pts | +33.3 pts | MET |
 
-| Measure | Seed 42 | Seed 7 | Seed 2024 | Spread |
-|---|---|---|---|---|
-| Overall accuracy | 0.500 | 0.344 | 0.438 | 0.156 |
-| Macro F1 | 0.304 | 0.190 | 0.261 | 0.114 |
-| F1 — `ticket_exchange` | 0.000 | 0.000 | 0.000 | 0.000 |
-| F1 — `logistics` | 0.588 | 0.474 | 0.471 | 0.118 |
-| F1 — `analysis` | 0.000 | 0.000 | 0.000 | 0.000 |
-| F1 — `commentary` | 0.629 | 0.286 | 0.571 | 0.343 |
+
+
 
 **Did it help, and how do I know:**
+Partially, and unevenly. `ticket_exchange` went from a total collapse
+(0.000 F1 on every seed, Before) to actually being predicted — 0.400 / 0.857 /
+0.769, clearing its 0.85 target on 2 of 3 seeds. `commentary` also newly
+clears its 0.50 bar on *all three* seeds, where it had failed on seed 7 before
+(0.286). Both are directly traceable to adding examples: `ticket_exchange`'s
+test-set confusion is no longer 100% directional into `commentary`.
 
-<!-- If it didn't, say so. Relabelling that didn't help is a genuinely
-     interesting result and earns full credit. -->
+But `analysis` is flat 0.000 on every seed, identical to Before, despite a
++43% increase in its training examples (23 → 33) — a *larger* proportional
+increase than `ticket_exchange` got (30 → 40, +33%). That's the interesting
+result: proportionally similar increases in training data fixed one label's
+collapse and did nothing for the other. It tells me `analysis`'s problem was
+never just data volume — it's the `analysis`/`commentary` boundary itself
+(my own hardest boundary, named in Label Taxonomy) being essentially
+invisible to the model at this scale, not a count problem adding more of the
+same kind of example can fix.
 
-
+Overall accuracy didn't improve either — and the three-seed spread actually
+*widened* (0.156 → 0.263), meaning the measure is less stable now, not more.
+So: a real, targeted win on `ticket_exchange` and `commentary`, and a genuine
+negative result on `analysis` that rules out "just add more examples" as the
+fix for that label.
 
 ---
 
@@ -549,11 +574,37 @@ mode than misreading the rules themselves.
 
 <!-- For each criterion still missed: what you'd do, and why you stopped. -->
 
+**Criterion 1 (overall accuracy ≥ 0.70):** would need a much larger dataset
+across all four labels, not just `analysis` — the 26-point seed spread shows
+the measure itself is still unstable at ~250 posts. Stopped because that's a
+data-collection effort beyond the scope of one improvement round.
+
+**Criterion 2 (`ticket_exchange` F1 ≥ 0.85 on all three seeds):** two of
+three seeds already clear it; the remaining miss (seed 42, 0.400) looks one
+bad split away from passing. Next step would be more `ticket_exchange`
+examples in under-represented phrasings (trades/swaps, not just "selling").
+Stopped because this round's collection was broader than one label.
+
+**Criterion 4 (`analysis` ≥ 0.50):** `commentary` now passes; `analysis`
+doesn't, and didn't respond to more of the same kind of example. The next
+move isn't more data — it's revisiting the taxonomy's hardest boundary itself
+(tightening what counts as `analysis` so it's more lexically distinguishable
+from `commentary`) or reweighting the class during training. Stopped because
+that's a taxonomy change, a bigger structural fix than this round's "add
+examples" improvement was scoped for.
+
 
 
 **The gap between what I meant my labels to capture and what the model
 learned:**
-<!-- Two sentences. Your confusion matrix is the evidence. -->
+I meant `analysis` to capture any post where a specific, checkable fact is
+load-bearing for the argument, but the model has learned to call almost every
+argued-sounding post `commentary` regardless — 0% `analysis` recall in both
+the Before and After runs, with the confusion matrix showing total
+one-directional collapse into the majority class rather than scattered
+confusion. The gap is between how fine a distinction "the fact must be
+load-bearing" is to a human reader and what a model fine-tuned on ~250 mostly
+short, lexically similar posts can actually discriminate.
 
 
 
@@ -561,32 +612,32 @@ learned:**
 
      SUBMISSION CHECKLIST — unit 5
 
-       [ ] criteria.md has five numbered criteria, each naming a NUMBER
-       [ ] Each has a reason underneath tied to your data or taxonomy
-       [ ] labels.csv: at least 150 rows, text/label/note, ONE file not split
-       [ ] No label above 70%
-       [ ] All five unit 5 sections have real content
-       [ ] Label Taxonomy includes the decision rule for your hardest boundary
-       [ ] The Dataset includes three hard cases
-       [ ] results.json and test_split.csv committed (the notebook does this)
-       [ ] At least four new commits
-       [ ] Repository URL submitted — WRITE IT DOWN
+       [x] criteria.md has five numbered criteria, each naming a NUMBER
+       [x ] Each has a reason underneath tied to your data or taxonomy
+       [x ] labels.csv: at least 150 rows, text/label/note, ONE file not split
+       [x] No label above 70%
+       [x ] All five unit 5 sections have real content
+       [x ] Label Taxonomy includes the decision rule for your hardest boundary
+       [x ] The Dataset includes three hard cases
+       [x ] results.json and test_split.csv committed (the notebook does this)
+       [ x] At least four new commits
+       [ x] Repository URL submitted — WRITE IT DOWN
 
      SUBMISSION CHECKLIST — unit 6
 
-       [ ] Baseline vs. Trained table, with your prediction written beforehand
-       [ ] Run Log — Before, five criteria across three seeds
-       [ ] Confusion matrix TYPED AS A MARKDOWN TABLE
-       [ ] A verdict on every criterion
-       [ ] A diagnosis for every miss, using the agreement report as evidence
-       [ ] Agreement Report with every disagreement adjudicated
-       [ ] One improvement, with Run Log — After
-       [ ] What's Still Broken
-       [ ] results_three_seeds_before.json, results_three_seeds_after.json,
+       [x ] Baseline vs. Trained table, with your prediction written beforehand
+       [x ] Run Log — Before, five criteria across three seeds
+       [x ] Confusion matrix TYPED AS A MARKDOWN TABLE
+       [x ] A verdict on every criterion
+       [x ] A diagnosis for every miss, using the agreement report as evidence
+       [x ] Agreement Report with every disagreement adjudicated
+       [ x] One improvement, with Run Log — After
+       [x ] What's Still Broken
+       [x ] results_three_seeds_before.json, results_three_seeds_after.json,
            baseline_results.json and
            agreement_results.json committed
-       [ ] At least four new commits
-       [ ] The SAME repository URL as last unit
+       [ x] At least four new commits
+       [ x] The SAME repository URL as last unit
 
      Do not delete and recreate this repository.
      ═════════════════════════════════════════════════════════════════════ -->
