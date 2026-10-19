@@ -541,8 +541,21 @@ and toward adding examples.
 | 4. `analysis` & `commentary` F1 ≥ 0.50 each | ≥ 0.50 both | `analysis` 0.000 / `commentary` 0.500 | `analysis` 0.000 / `commentary` 0.647 | `analysis` 0.000 / `commentary` 0.706 | MISSED (`commentary` now clears it on all three; `analysis` doesn't move at all) |
 | 5. Confident-third vs. least-confident-third accuracy | ≥ 20 pts | +66.7 pts | +25.0 pts | +33.3 pts | MET |
 
+Accuracy moved 0.263 across seeds — more than 10 points. Dataset is too small or too lopsided for a stable measure.
 
+| true \ predicted | ticket_exchange | logistics | analysis | commentary |
+|---|---|---|---|---|
+| **ticket_exchange** | 2 | 0 | 0 | 6 |
+| **logistics** | 0 | 0 | 0 | 10 |
+| **analysis** | 0 | 0 | 0 | 7 |
+| **commentary** | 0 | 1 | 0 | 12 |
 
+Biggest confusion: 10 real `logistics` posts called `commentary`.
+The other direction: 1 real `commentary` posts called `logistics`.
+
+That's lopsided — the model leans toward `commentary` on this pair.
+A direction like that usually points at your labelling rather than the
+model. 
 
 **Did it help, and how do I know:**
 Partially, and unevenly. `ticket_exchange` went from a total collapse
