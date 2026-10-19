@@ -527,6 +527,15 @@ mode than misreading the rules themselves.
 | 4.  |  |  |  |  |  |
 | 5.  |  |  |  |  |  |
 
+| Measure | Seed 42 | Seed 7 | Seed 2024 | Spread |
+|---|---|---|---|---|
+| Overall accuracy | 0.500 | 0.344 | 0.438 | 0.156 |
+| Macro F1 | 0.304 | 0.190 | 0.261 | 0.114 |
+| F1 — `ticket_exchange` | 0.000 | 0.000 | 0.000 | 0.000 |
+| F1 — `logistics` | 0.588 | 0.474 | 0.471 | 0.118 |
+| F1 — `analysis` | 0.000 | 0.000 | 0.000 | 0.000 |
+| F1 — `commentary` | 0.629 | 0.286 | 0.571 | 0.343 |
+
 **Did it help, and how do I know:**
 
 <!-- If it didn't, say so. Relabelling that didn't help is a genuinely

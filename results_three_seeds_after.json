@@ -1,67 +1,67 @@
 [
   {
     "seed": 42,
-    "n_test": 32,
-    "accuracy": 0.5,
-    "f1_macro": 0.30420168067226894,
+    "n_test": 38,
+    "accuracy": 0.3684210526315789,
+    "f1_macro": 0.225,
     "per_label": {
       "ticket_exchange": {
+        "precision": 1.0,
+        "recall": 0.25,
+        "f1": 0.4,
+        "support": 8
+      },
+      "logistics": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 10
+      },
+      "analysis": {
         "precision": 0.0,
         "recall": 0.0,
         "f1": 0.0,
         "support": 7
       },
-      "logistics": {
-        "precision": 0.625,
-        "recall": 0.5555555555555556,
-        "f1": 0.5882352941176471,
-        "support": 9
-      },
-      "analysis": {
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1": 0.0,
-        "support": 5
-      },
       "commentary": {
-        "precision": 0.4583333333333333,
-        "recall": 1.0,
-        "f1": 0.6285714285714286,
-        "support": 11
+        "precision": 0.34285714285714286,
+        "recall": 0.9230769230769231,
+        "f1": 0.5,
+        "support": 13
       }
     },
     "confusion": {
       "ticket_exchange": {
-        "ticket_exchange": 0,
-        "logistics": 2,
+        "ticket_exchange": 2,
+        "logistics": 0,
         "analysis": 0,
-        "commentary": 5
+        "commentary": 6
       },
       "logistics": {
         "ticket_exchange": 0,
-        "logistics": 5,
+        "logistics": 0,
         "analysis": 0,
-        "commentary": 4
+        "commentary": 10
       },
       "analysis": {
         "ticket_exchange": 0,
-        "logistics": 1,
+        "logistics": 0,
         "analysis": 0,
-        "commentary": 4
+        "commentary": 7
       },
       "commentary": {
         "ticket_exchange": 0,
-        "logistics": 0,
+        "logistics": 1,
         "analysis": 0,
-        "commentary": 11
+        "commentary": 12
       }
     },
     "confidence": {
-      "mean_when_right": 0.32986366748809814,
-      "mean_when_wrong": 0.31095343828201294,
-      "accuracy_most_confident_third": 0.9,
-      "accuracy_least_confident_third": 0.4,
-      "n_per_third": 10
+      "mean_when_right": 0.3591271936893463,
+      "mean_when_wrong": 0.3172515630722046,
+      "accuracy_most_confident_third": 0.8333333333333334,
+      "accuracy_least_confident_third": 0.16666666666666666,
+      "n_per_third": 12
     },
     "device": "cpu",
     "device_name": "CPU",
@@ -70,67 +70,67 @@
   },
   {
     "seed": 7,
-    "n_test": 32,
-    "accuracy": 0.34375,
-    "f1_macro": 0.18984962406015038,
+    "n_test": 38,
+    "accuracy": 0.5789473684210527,
+    "f1_macro": 0.4950980392156863,
     "per_label": {
       "ticket_exchange": {
+        "precision": 1.0,
+        "recall": 0.75,
+        "f1": 0.8571428571428571,
+        "support": 8
+      },
+      "logistics": {
+        "precision": 0.45454545454545453,
+        "recall": 0.5,
+        "f1": 0.47619047619047616,
+        "support": 10
+      },
+      "analysis": {
         "precision": 0.0,
         "recall": 0.0,
         "f1": 0.0,
         "support": 7
       },
-      "logistics": {
-        "precision": 0.3103448275862069,
-        "recall": 1.0,
-        "f1": 0.47368421052631576,
-        "support": 9
-      },
-      "analysis": {
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1": 0.0,
-        "support": 5
-      },
       "commentary": {
-        "precision": 0.6666666666666666,
-        "recall": 0.18181818181818182,
-        "f1": 0.2857142857142857,
-        "support": 11
+        "precision": 0.5238095238095238,
+        "recall": 0.8461538461538461,
+        "f1": 0.6470588235294118,
+        "support": 13
       }
     },
     "confusion": {
       "ticket_exchange": {
-        "ticket_exchange": 0,
-        "logistics": 7,
+        "ticket_exchange": 6,
+        "logistics": 2,
         "analysis": 0,
         "commentary": 0
       },
       "logistics": {
         "ticket_exchange": 0,
-        "logistics": 9,
+        "logistics": 5,
         "analysis": 0,
-        "commentary": 0
+        "commentary": 5
       },
       "analysis": {
         "ticket_exchange": 0,
-        "logistics": 4,
+        "logistics": 2,
         "analysis": 0,
-        "commentary": 1
+        "commentary": 5
       },
       "commentary": {
         "ticket_exchange": 0,
-        "logistics": 9,
+        "logistics": 2,
         "analysis": 0,
-        "commentary": 2
+        "commentary": 11
       }
     },
     "confidence": {
-      "mean_when_right": 0.3202980160713196,
-      "mean_when_wrong": 0.3058837056159973,
-      "accuracy_most_confident_third": 0.7,
-      "accuracy_least_confident_third": 0.1,
-      "n_per_third": 10
+      "mean_when_right": 0.3220905363559723,
+      "mean_when_wrong": 0.3085475564002991,
+      "accuracy_most_confident_third": 0.75,
+      "accuracy_least_confident_third": 0.5,
+      "n_per_third": 12
     },
     "device": "cpu",
     "device_name": "CPU",
@@ -139,67 +139,67 @@
   },
   {
     "seed": 2024,
-    "n_test": 32,
-    "accuracy": 0.4375,
-    "f1_macro": 0.26050420168067223,
+    "n_test": 38,
+    "accuracy": 0.631578947368421,
+    "f1_macro": 0.5278691896338955,
     "per_label": {
       "ticket_exchange": {
+        "precision": 1.0,
+        "recall": 0.625,
+        "f1": 0.7692307692307693,
+        "support": 8
+      },
+      "logistics": {
+        "precision": 0.5833333333333334,
+        "recall": 0.7,
+        "f1": 0.6363636363636364,
+        "support": 10
+      },
+      "analysis": {
         "precision": 0.0,
         "recall": 0.0,
         "f1": 0.0,
         "support": 7
       },
-      "logistics": {
-        "precision": 0.5,
-        "recall": 0.4444444444444444,
-        "f1": 0.47058823529411764,
-        "support": 9
-      },
-      "analysis": {
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1": 0.0,
-        "support": 5
-      },
       "commentary": {
-        "precision": 0.4166666666666667,
-        "recall": 0.9090909090909091,
-        "f1": 0.5714285714285714,
-        "support": 11
+        "precision": 0.5714285714285714,
+        "recall": 0.9230769230769231,
+        "f1": 0.7058823529411765,
+        "support": 13
       }
     },
     "confusion": {
       "ticket_exchange": {
+        "ticket_exchange": 5,
+        "logistics": 2,
+        "analysis": 0,
+        "commentary": 1
+      },
+      "logistics": {
+        "ticket_exchange": 0,
+        "logistics": 7,
+        "analysis": 0,
+        "commentary": 3
+      },
+      "analysis": {
         "ticket_exchange": 0,
         "logistics": 2,
         "analysis": 0,
         "commentary": 5
       },
-      "logistics": {
-        "ticket_exchange": 0,
-        "logistics": 4,
-        "analysis": 0,
-        "commentary": 5
-      },
-      "analysis": {
-        "ticket_exchange": 0,
-        "logistics": 1,
-        "analysis": 0,
-        "commentary": 4
-      },
       "commentary": {
         "ticket_exchange": 0,
         "logistics": 1,
         "analysis": 0,
-        "commentary": 10
+        "commentary": 12
       }
     },
     "confidence": {
-      "mean_when_right": 0.3364899754524231,
-      "mean_when_wrong": 0.3084365725517273,
-      "accuracy_most_confident_third": 0.8,
-      "accuracy_least_confident_third": 0.2,
-      "n_per_third": 10
+      "mean_when_right": 0.35147640109062195,
+      "mean_when_wrong": 0.32905274629592896,
+      "accuracy_most_confident_third": 0.75,
+      "accuracy_least_confident_third": 0.4166666666666667,
+      "n_per_third": 12
     },
     "device": "cpu",
     "device_name": "CPU",
