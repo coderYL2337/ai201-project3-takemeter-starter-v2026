@@ -140,11 +140,16 @@ disagreed with (several of the hardest ones are below).
 
 | Label | Count | Share |
 |---|---|---|
-| `commentary` | 69 | 33.2% |
-| `logistics` | 62 | 29.8% |
-| `ticket_exchange` | 44 | 21.2% |
-| `analysis` | 33 | 15.9% |
-| **Total** | 208 | 100% |
+| `commentary` | 86 | 34.1% |
+| `logistics` | 69 | 27.4% |
+| `ticket_exchange` | 54 | 21.4% |
+| `analysis` | 43 | 17.1% |
+| **Total** | 252 | 100% |
+
+<!-- Milestone 5 addition: 44 new posts collected across two batches for the
+     improvement round, aimed at the thinnest label (`analysis`, worst F1 in
+     Run Log — Before). Only 10 of the 44 turned out to actually be `analysis`
+     — see note below. -->
 
 **Three hard cases**
 
